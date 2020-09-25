@@ -1,58 +1,39 @@
 import React, { Component } from "react";
-import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
-import AppBar from "material-ui/AppBar";
-import TextField from "material-ui/TextField";
-import RaisedButton from "material-ui/RaisedButton";
-import history from '../../Routing/history'
-
+import history from "../../Routing/history";
+import "./LoginForm.css";
 
 export class LoginForm extends Component {
-  continue = (e) => {
-    e.preventDefault();
-    this.props.nextStep();
-  };
-
+  
   render() {
     const { values, handleChange } = this.props;
-    
+
     return (
-      <MuiThemeProvider>
-        <React.Fragment>
-          <AppBar title="Login"  />
-          <TextField
-            hintText="Enter your email"
-            floatingLabelText="Email"
-            onChange={handleChange("email")}
-            defaultValue={values.email}
-          />
-          <br />
-          <TextField
-            type="password"
-            hintText="Enter your password"
-            floatingLabelText="Password"
-            onChange={handleChange("password")}
-            defaultValue={values.password}
-          />
-          <br />
-          <RaisedButton
-            label="Log in"
-            primary={true}
-            style={styles.button}
-            onClick={() => history.push("/home")}
-            
-          />
-        </React.Fragment>
-      </MuiThemeProvider>
+      <div>
+        <form>
+          <input type="text" placeholder="email" onChange= {handleChange('email')} defaultValue={values.email}/>
+          <p />
+          <input type="password" placeholder="password" onChange= {handleChange('password')}  defaultValue= {values.password}/>
+          {/*Maybe eliminate password from state for security*/}
+
+          <div className="instructions">
+            <a
+              href="https://portal.upr.edu/rum/portal.php?a=ras_psr_start"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Forgot password?
+            </a>
+            <p>
+              Log in using your email and password provided by the university.
+            </p>
+          </div>
+        </form>
+        <button className="loginbutton" onClick={() => history.push("/home")}>
+          Log in
+        </button>
+      </div>
     );
   }
 }
-
-
-const styles = {
-  button: {
-    margin: 15,
-  }, 
-
-};
 
 export default LoginForm;

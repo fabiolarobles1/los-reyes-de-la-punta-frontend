@@ -1,21 +1,28 @@
 import React, { Component } from "react";
-import MainForm from "../Login/MainForm";
+import SignUpForm from "./SignUpForm";
 
 export class SignUp extends Component {
-  continue = (e) => {
-    e.preventDefault();
-    this.props.nextStep();
-  };
+  state = {
+    firstName : '',
+    lastName: '',
+    studentNumber: '',
+    email: '',
+    degree: '',
+    password: ''
+}
+//Handle fields change
+handleChange = input => e => {
+  this.setState({[input]: e.target.value});
+}
 
-  back = (e) => {
-    e.preventDefault();
-    this.props.prevStep();
-  };
   
   render() {
+    const { firstName, lastName, studentNumber, email, degree,  password} = this.state
+    const values = { firstName, lastName, studentNumber, email, degree,  password}
     return (
       <div>
-        <MainForm />
+       This is the sign up page.
+       <SignUpForm handleChange={this.handleChange} values={values} />
       </div>
     );
   }
