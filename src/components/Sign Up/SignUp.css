@@ -23,8 +23,19 @@
     color: black;
 }
 
-  /* Add a color to the active/current link */
+/* Add a color to the active/current link */
 .topnav a.active {
     background-color: #4CAF50;
     color: white;
+}
+
+/* Style for UPRM logo */
+.SignUp-header {
+    background-color: #E8E8E8;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(10px + 2vmin);
+    color: black;
 }

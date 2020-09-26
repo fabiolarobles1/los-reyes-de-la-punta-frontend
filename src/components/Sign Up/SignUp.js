@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import history from "../../Routing/history";
+import logo from "../../assets/uprmLogo.png";
+import "../Home/Home.css";
 import "./SignUp.css";
 import SignUpForm from "./SignUpForm";
 
@@ -29,8 +31,12 @@ export class SignUp extends Component {
             <a href ="" onClick={() => history.push("/")}>Log In</a>
           </p>
         </div>
-       this is the sign up form
-       <SignUpForm handleChange={this.handleChange} values={values} />
+        <div className="SignUp-header">
+          <br />
+          <img src={logo} className="Home-logo" alt="logo" />
+          <br />
+          <SignUpForm handleChange={this.handleChange} values={values} />
+        </div>
       </div>
     );
   }
