@@ -12,6 +12,7 @@
   
 .topnav {
   background-color: #46BA31;
+  background-color: #0f8f46;
   overflow: hidden;
   color: white;
   text-align: left;
@@ -36,8 +37,3 @@
   color: black;
 }
 
-/* Add a color to the active/current link */
-.topnav a.active {
-  background-color: #4CAF50;
-  color: white;
-}

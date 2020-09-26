@@ -1,20 +1,38 @@
 import React, { Component } from "react";
 import history from "../../Routing/history";
 import "./LoginForm.css";
+import { FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+import { faEye, faEyeSlash} from '@fortawesome/free-solid-svg-icons';
+
 
 export class LoginForm extends Component {
+
+    state = {
+      isRevealedPassword: false,
+    };
+
+    togglePassword = (e) => {
+      this.setState({isRevealedPassword: !this.state.isRevealedPassword});
+    };
   
   render() {
     const { values, handleChange } = this.props;
+    const { isRevealedPassword} = this.state;
 
     return (
       <div>
         <form>
           <input type="text" placeholder="email" onChange= {handleChange('email')} defaultValue={values.email}/>
-          <p />
-          <input type="password" placeholder="password" onChange= {handleChange('password')}  defaultValue= {values.password}/>
+          <div style= {{'position': 'relative'}}>
+          <input  type={isRevealedPassword ? "text2" : "password"} placeholder="password" onChange= {handleChange('password')}  defaultValue= {values.password} />
+          <span onClick={this.togglePassword}>
+            <span>
+              {isRevealedPassword ? <FontAwesomeIcon icon= {faEye} className= "customIcon" />:
+              <FontAwesomeIcon icon= {faEyeSlash} className= "customIcon" />}
+            </span>
+          </span>
           {/*Maybe eliminate password from state for security*/}
-
+        </div>
           <div className="instructions">
             <a
               href="https://portal.upr.edu/rum/portal.php?a=ras_psr_start"
