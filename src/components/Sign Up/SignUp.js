@@ -20,8 +20,8 @@ export class SignUp extends Component {
   }
 
   render() {
-    const { firstName, lastName, studentNumber, email, degree,  password} = this.state
-    const values = { firstName, lastName, studentNumber, email, degree,  password}
+    const {firstName, lastName, studentNumber, email, degree, password, confirmPassword} = this.state
+    const values = {firstName, lastName, studentNumber, email, degree, password, confirmPassword}
     return (
       <div className="SignUp">
         <div className="topnav">
