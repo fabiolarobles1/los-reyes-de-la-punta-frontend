@@ -77,8 +77,14 @@ input[type=password] {
     background-image: url('../../assets/key.png');
 }
 
-/* Add icon to confirm password field */
-input[type=confirmPassword] {
-    background-image: url('../../assets/keyFill.png');
-    -webkit-text-security: dots;
+/* Add icon to unhidden password field */
+input[type=unhiddenPassword] {
+    background-image: url('../../assets/key.png');
+}
+
+/* Position for hide/show password icon */
+.hiddenIcon {
+    position: absolute;
+    left: 222px;
+    top: 8px;
 }
