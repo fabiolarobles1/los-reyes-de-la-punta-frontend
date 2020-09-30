@@ -1,90 +1,93 @@
-
 /* Style for sign up button */
 .signupbutton {
-    background-color: #46BA31;
-    background-color: #0f8f46;
-    border: none;
-    color: white;
-    padding: 10px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    border-radius: 6px;
-    transition-duration: 10ms;
-  }
+  background-color: #46ba31;
+  background-color: #0f8f46;
+  border: none;
+  color: white;
+  padding: 10px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border-radius: 6px;
+  transition-duration: 10ms;
+}
 
 /* Style for sign up button when hovering over it */
 .signupbutton:hover {
-    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
-    background-color: #2e6a30;
+  box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24),
+    0 17px 50px 0 rgba(0, 0, 0, 0.19);
+  background-color: #2e6a30;
 }
 
 /* Style for all input text fields */
 input {
-    background-color: #C4C4C4;
-    padding: 8px 80px;
-    background-size: 20px 20px;
-    padding-left: 40px;
-    background-position: 5px ;
-    background-repeat: no-repeat;
-    text-align: left;
-    border-style: none;
-    border-bottom: solid;
-    border-color: #46BA31;
-    border-color: #0f8f46;
-    border-radius: 5px;
+  background-color: #c4c4c4;
+  padding: 8px 80px;
+  background-size: 20px 20px;
+  padding-left: 40px;
+  background-position: 5px;
+  background-repeat: no-repeat;
+  text-align: left;
+  border-style: none;
+  border-bottom: solid;
+  border-color: #46ba31;
+  border-color: #0f8f46;
+  border-radius: 5px;
 }
 
 /* Add icon to first name field */
-input[type=firstName] {
-    background-image: url('../../assets/name.png');
+input[type="firstName"] {
+  background-image: url("../../assets/name.png");
 }
 
 /* Add icon to last name field */
-input[type=lastName] {
-    background-image: url('../../assets/lastName.png');
+input[type="lastName"] {
+  background-image: url("../../assets/lastName.png");
 }
 
 /* Add icon to student number field */
-input[type=studentNumber] {
-    background-image: url('../../assets/id.png');
+input[type="studentNumber"] {
+  background-image: url("../../assets/id.png");
 }
 
 /* Add icon to email field */
-input[type=email] {
-    background-image: url('../../assets/emailIcon.png');
+input[type="email"] {
+  background-image: url("../../assets/emailIcon.png");
 }
 
-select[type=degree] {
-    background-color: #C4C4C4;
-    padding: 7px 10px;
-    background-image: url('../../assets/diploma.png');
-    background-size: 20px 20px;
-    padding-left: 40px;
-    background-position: 5px ;
-    background-repeat: no-repeat;
-    text-align: left;
-    border-style: none;
-    border-bottom: solid;
-    border-color: #46BA31;
-    border-color: #0f8f46;
-    border-radius: 5px;
+select[type="degree"] {
+  background-color: #c4c4c4;
+  padding: 7px 10px;
+  background-image: url("../../assets/diploma.png");
+  background-size: 20px 20px;
+  padding-left: 40px;
+  background-position: 5px;
+  background-repeat: no-repeat;
+  text-align: left;
+  border-style: none;
+  border-bottom: solid;
+  border-color: #46ba31;
+  border-color: #0f8f46;
+  border-radius: 5px;
 }
 
 /* Add icon to password field */
-input[type=password] {
-    background-image: url('../../assets/key.png');
+input[type="password"] {
+  background-image: url("../../assets/key.png");
 }
 
 /* Add icon to unhidden password field */
-input[type=unhiddenPassword] {
-    background-image: url('../../assets/key.png');
+input[type="unhiddenPassword"] {
+  background-image: url("../../assets/key.png");
 }
 
 /* Position for hide/show password icon */
 .hiddenIcon {
-    position: absolute;
-    left: 222px;
-    top: 8px;
+  float: right;
+  margin-top: 10px;
+  vertical-align: middle;
+  position: relative;
+  height: 20px;
+  width: 20px;
 }
