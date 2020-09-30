@@ -26,21 +26,27 @@ export class SignUpForm extends Component {
         return (
             <div>
                 <form>
+                <div className="input-container">
                     <input type="firstName" placeholder="name" onChange={handleChange('firstName')} defaultValue={values.firstName}/>
-                    <br/>
+                    </div>
+                    <div className="input-container">
                     <input type="LastName" placeholder="last name" onChange={handleChange('lastName')} defaultValue={values.LastName}/>
-                    <br/>
+                    </div>
+                    <div className="input-container">
                     <input type="studentNumber" placeholder="student number" onChange={handleChange('studentNumber')} defaultValue={values.studentNumber}/>
-                    <br/>
+                    </div>
+                    <div className="input-container">
                     <input type="email" placeholder="email" onChange={handleChange('email')} defaultValue={values.email}/>
-                    <br/>
+                    </div>
+                    <div className="input-container">
                     <select type="degree" onChange={handleChange('degree')} defaultValue={values.degree}>
                         <option value="select">select your degree</option>
                         <option value="inso">Software Engineering</option>
                         <option value="ciic">Computer Science and Engineering</option>
                         <option value="icom">Computer Engineering</option>
                     </select>
-                    <div style={{'position': 'relative'}}>
+                    </div>
+                    <div className="input-container">
                         <input type={isRevealedPassword ? "unhiddenPassword" : "password"} placeholder="password" onChange={handleChange('password')} defaultValue={values.password}/>
                         <span onClick={this.togglePassword}>
                             <span>
@@ -49,7 +55,7 @@ export class SignUpForm extends Component {
                             </span>
                         </span>
                     </div>
-                    <div style={{'position': 'relative'}}>
+                    <div className="input-container">
                         <input type={isRevealedConfirmPassword ? "unhiddenPassword" : "password"} placeholder="confirm password" onChange={handleChange('confirmPassword')} defaultValue={values.confirmPassword}/>
                         <span onClick={this.toggleConfirmPassword}>
                             <span>

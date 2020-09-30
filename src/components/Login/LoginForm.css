@@ -25,6 +25,7 @@
 
 input {
   outline: 0;
+  padding: 8px 80px;
   overflow: hidden;
   text-align: left;
   font-size: 16px;
@@ -38,8 +39,6 @@ input {
 
   border-style: none;
   border-bottom: solid;
-  border-top: solid;
-  border-color: #46ba31;
   border-color: #0f8f46;
   border-radius: 5px;
 }
