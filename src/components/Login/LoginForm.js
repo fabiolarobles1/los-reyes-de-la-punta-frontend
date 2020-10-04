@@ -58,9 +58,6 @@ export class LoginForm extends Component {
             </p>
           </div>
         </form>
-        <button className="loginbutton" onClick={() => history.push("/home")}>
-          Log in
-        </button>
       </div>
     );
   }

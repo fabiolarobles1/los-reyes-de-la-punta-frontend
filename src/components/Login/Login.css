@@ -9,16 +9,31 @@
     color: black;
   }
 
+  .loginbutton {
+    background-color: #0f8f46;
+    border: none;
+    color: white;
+    padding: 10px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 6px;
+    transition-duration: 10ms;
+  }
+  
+  .loginbutton:hover {
+    box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24),
+      0 17px 50px 0 rgba(0, 0, 0, 0.19);
+    background-color: #2e6a30;
+  }
   
 .topnav {
   background-color: #46BA31;
-  background-color: #0f8f46;
   overflow: hidden;
   color: white;
   text-align: left;
   padding-left: 10px;
-  
-  
 }
 
 /* Style the links inside the navigation bar */
@@ -37,3 +52,12 @@
   color: black;
 }
 
+p[type=invalidInput] {
+  visibility: visible;
+  color: red;
+  font-size: small;
+}
+
+p[type = notInvalidInput]{
+  visibility: hidden;
+}

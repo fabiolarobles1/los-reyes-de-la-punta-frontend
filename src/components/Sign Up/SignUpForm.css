@@ -102,3 +102,7 @@ input[type="unhiddenPassword"] {
   height: 20px;
   width: 20px;
 }
+
+button{
+  margin: 15px;
+}
