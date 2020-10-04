@@ -1,0 +1,25 @@
+.table {
+    background: #f4f4f4;
+    background-image: url('../assets/courses_picture.jpg');
+    background-repeat: no-repeat;
+    background-size: 95px 95px;
+    background-position: 5px;
+    padding-left: 115px;
+    font-size: 12px;
+    width: 500px;
+    font-weight: 600;
+    border: .2px rgba(211, 211, 211, 0.829) solid;
+    color: gray;
+    font-family: Helvetica;
+    text-align: left;
+    cursor: default;
+    box-sizing: border-box;
+    border-radius: 3px;
+    
+    
+}
+
+.table:hover {
+    background-color: #f4f4f494;
+    /* opacity: .65; */
+}
