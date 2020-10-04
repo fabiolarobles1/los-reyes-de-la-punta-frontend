@@ -4,6 +4,7 @@ import "./SignUp.css";
 import "./SignUpForm.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
+import InputMask from 'react-input-mask';
 
 export class SignUpForm extends Component {
   state = {
@@ -45,11 +46,12 @@ export class SignUpForm extends Component {
             />
           </div>
           <div className="input-container">
-            <input
+            <InputMask
               type="studentNumber"
               placeholder="student number"
               onChange={handleChange("studentNumber")}
               defaultValue={values.studentNumber}
+              mask="999-99-9999"
             />
           </div>
           <div className="input-container">
@@ -106,11 +108,8 @@ export class SignUpForm extends Component {
               </span>
             </span>
           </div>
+          <br/>
         </form>
-        <br />
-        <button className="signupbutton" onClick={() => history.push("/home")}>
-          Sign Up
-        </button>
       </div>
     );
   }
