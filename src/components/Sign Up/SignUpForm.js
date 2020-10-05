@@ -108,7 +108,6 @@ export class SignUpForm extends Component {
               </span>
             </span>
           </div>
-          <br/>
         </form>
       </div>
     );

@@ -61,3 +61,13 @@
       0 17px 50px 0 rgba(0, 0, 0, 0.19);
     background-color: #2e6a30;
   }
+
+  /* Style for error label */
+  label {
+    padding-top: 10px;
+    overflow: hidden;
+    text-align: center;
+    font-size: 16px;
+    vertical-align: middle;
+    color: red;
+  }
