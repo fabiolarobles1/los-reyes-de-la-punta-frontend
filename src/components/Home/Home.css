@@ -87,7 +87,7 @@
 
 .scroller{
   max-height: 525px;
-  overflow: visible;
+  overflow: scroll;
 }
 
 input[type=text3] {
