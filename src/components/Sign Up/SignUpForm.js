@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import history from "../../Routing/history";
 import "./SignUp.css";
 import "./SignUpForm.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -32,7 +31,7 @@ export class SignUpForm extends Component {
           <div className="input-container">
             <input
               type="firstName"
-              placeholder="name"
+              placeholder="first name"
               onChange={handleChange("firstName")}
               defaultValue={values.firstName}
             />

@@ -1,0 +1,74 @@
+[
+        {
+            "id": "CIIC4010",
+            "name": "Advance Programming",
+            "credits": 3,
+            "section": "001",
+            "professor": "Bienvenido Velez",
+            "department": "Computer Science and Engineering",
+            "semester": 2,
+            "year": 1,
+            "route": "/",
+            "image": "algorithm.jpg"
+        },
+        {
+            "id": "CIIC4020",
+            "name": "Data Structures",
+            "credits": 3,
+            "section": "013",
+            "professor": "Manuel Rodriguez",
+            "department": "Computer Science and Engineering",
+            "semester": 2,
+            "year": 2,
+            "route": "/home",
+            "image": "emailIcon.png"
+        },
+        {
+            "id": "INSO4101",
+            "name": "Introduction to Software Engineering",
+            "credits": 3,
+            "section": "036",
+            "professor": "Marko Schutz",
+            "department": "Computer Science and Engineering",
+            "semester": 1,
+            "year": 3,
+            "route": "/signup",
+            "image": "key.png"
+        },
+        {
+            "id": "CIIC4030",
+            "name": "Programming Languages",
+            "credits": 3,
+            "section": "005",
+            "professor": "Wilson Rivera",
+            "department": "Computer Science and Engineering",
+            "semester": 1,
+            "year": 4,
+            "route": "/",
+            "image": "search-icon.png"
+        },
+        {
+            "id": "INGE3035",
+            "name": "Engineering Mechanics",
+            "credits": 3,
+            "section": "002",
+            "professor": "Mario Rivera",
+            "department": "General Engineering",
+            "semester": 1,
+            "year": 5,
+            "route": "/home",
+            "image": "uprmLogo.png"
+        },
+        {
+            "id": "CIIC3081",
+            "name": "Computer Arquitechture I",
+            "credits": 3,
+            "section": "086",
+            "professor": "Jose Navarro",
+            "department": "Computer Science and Engineering",
+            "semester": 1,
+            "year": 3,
+            "route": "/signup",
+            "image": "tarzan.png"
+        }
+]
