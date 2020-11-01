@@ -26,6 +26,7 @@ input {
   border-radius: 5px;
 }
 
+
 /* Add icon to first name field */
 input[type="firstName"] {
   background-image: url("../../assets/name.png");
@@ -46,43 +47,6 @@ input[type="email"] {
   background-image: url("../../assets/emailIcon.png");
 }
 
-select[type="degree"] {
-  outline: 0;
-  background-color: #c4c4c4;
-  padding: 8px 42px;
-  background-image: url("../../assets/diploma.png");
-  padding-left: 40px;
-
-
-  background-color: #c4c4c4;
-  background-size: 20px 20px;
-  background-position: 5px;
-  background-repeat: no-repeat;
-
-  border-style: none;
-  border-bottom: solid;
-  border-color: #0f8f46;
-  border-radius: 5px;
-}
-
-select[type="year"] {
-  outline: 0;
-  background-color: #c4c4c4;
-  padding: 8px 122px;
-  background-image: url("../../assets/study.png");
-  padding-left: 40px;
-
-
-  background-color: #c4c4c4;
-  background-size: 20px 20px;
-  background-position: 5px;
-  background-repeat: no-repeat;
-
-  border-style: none;
-  border-bottom: solid;
-  border-color: #0f8f46;
-  border-radius: 5px;
-}
 
 /* Add icon to password field */
 input[type="password"] {
@@ -105,4 +69,39 @@ input[type="unhiddenPassword"] {
 
 button{
   margin: 15px;
+}
+
+.select-container{
+  position: relative;
+  margin: -15px;
+  padding: 10px 0 10px 0;
+}
+
+select {
+  outline: 0;
+  padding: 8px 0px 8px 0px ;
+  overflow: hidden;
+  text-align: left;
+  font-size: 16px;
+  vertical-align: middle;
+  padding-left: 40px;
+  width: 100%;
+
+  background-color: #c4c4c4;
+  background-size: 20px 20px;
+  background-position: 5px;
+  background-repeat: no-repeat;
+
+  border-style: none;
+  border-bottom: solid;
+  border-color: #0f8f46;
+  border-radius: 5px;
+}
+
+select[type="degree"] {
+  background-image: url("../../assets/diploma.png");
+}
+
+select[type="year"] {
+  background-image: url("../../assets/study.png");
 }

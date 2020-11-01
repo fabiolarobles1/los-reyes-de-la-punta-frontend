@@ -12,7 +12,7 @@ export class SignUp extends Component {
     firstName : "",
     lastName: "",
     studentNumber: "",
-    studentYear:"",
+    studentYear: "",
     email: "",
     degree: "",
     password: "",
