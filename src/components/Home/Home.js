@@ -23,7 +23,7 @@ class home extends Component {
       (semester.semester === 1 ? course.semester === 2 : course.semester === 1)}),
   }
 
-  menu = [{title: 'Enrollment for next semester', route:'/', icon: 'enrollment.png'}, {title:'Dropdown a course', route:'/', icon:'dropdown.png'}]
+  menu = [{title: 'Enrollment for next semester', route:'/search', icon: 'enrollment.png'}, {title:'Dropdown a course', route:'/', icon:'dropdown.png'}]
 
   //looks for the courses that match the search
   filtering = (id) => {

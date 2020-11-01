@@ -1,0 +1,102 @@
+
+/* Style top navigation bar main box */
+.topnav {
+  background-color: #46BA31;
+  overflow: hidden;
+  color: white;
+  text-align: left;
+  padding-left: 10px;
+}
+
+/* Style the links inside the navigation bar */
+.topnav a {
+  float: right;
+  color: #f2f2f2;
+  text-align: center;
+  text-decoration: none;
+  font-size: 17px;
+  padding-right: 10px;
+}
+
+.topnav a[type="home"] {
+  float: left;
+}
+
+/* Change the color of links on hover */
+.topnav a:hover {
+  color: black;
+}
+
+/* Add a color to the active/current link */
+.topnav a.active {
+  background-color: #4CAF50;
+  color: white;
+}
+
+/* Style for the search bar area*/
+.searchBar {
+  background-color: #C4C4C4;
+  overflow: hidden;
+  color: white;
+  text-align: left;
+  padding-left: 10px;
+}
+
+/* Style for the container for the search text input*/
+.search-container {
+  position: relative;
+  padding: 10px 0px 10px 20px;
+}
+
+/* Style for input fields */
+input {
+  outline: 0;
+  padding: 8px 80px;
+  overflow: hidden;
+  text-align: left;
+  font-size: 16px;
+  vertical-align: middle;
+  padding-left: 10px;
+
+  background-color: #ffffff;
+  background-size: 20px 20px;
+  background-position: 5px;
+  background-repeat: no-repeat;
+
+  border-style: none;
+  border-radius: 4px;
+}
+
+/* Style for search input field*/
+input[type="search"] {
+  padding: 8px 10px;
+  width: 500px;
+}
+
+/* Style for select semester drop down menu*/
+select {
+  outline: 0;
+  padding: 4px 10px;
+  overflow: hidden;
+  text-align: left;
+  font-size: 13px;
+  vertical-align: middle;
+  padding-left: 10px;
+  margin-left: 40px;
+
+  background-color: #ffffff;
+  background-size: 20px 20px;
+  background-position: 5px;
+  background-repeat: no-repeat;
+
+  border-style: none;
+  border-radius: 4px;
+}
+
+/* Style for the search button*/
+span {
+  background-color: #46BA31;
+  padding: 6px 5px;
+  padding-bottom: 10px;
+  border-radius: 4px;
+}
