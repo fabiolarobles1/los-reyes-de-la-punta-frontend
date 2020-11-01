@@ -4,25 +4,28 @@ import logo from "../../assets/uprmLogo.png";
 import "../Home/Home.css";
 import "./SignUp.css";
 import SignUpForm from "./SignUpForm";
+import axios from "axios";
+import jwt_decode from "jwt-decode";
 
 export class SignUp extends Component {
   state = {
     firstName : "",
     lastName: "",
     studentNumber: "",
+    studentYear: "",
     email: "",
     degree: "",
     password: "",
     confirmPassword: "",
     errorMessage: ""
-  }
+  };
   //Handle fields change
   handleChange = input => e => {
     this.setState({[input]: e.target.value});
   }
 
   validateFields = () => {
-    // regex to check that the email input follows the correcto format
+    // regex to check that the email input follows the correct format
     let emailRegex = new RegExp("[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}");
     // array to store string corresponding to the incorrect input fields
     let errorArray = [];
@@ -45,6 +48,10 @@ export class SignUp extends Component {
     // if nothing was selected in degree OR "select your degree" was selected
     if (this.state.degree.length === 0 || this.state.degree === "select") {
       errorArray.push("degree");
+    }
+    // if nothing was selected in year OR "select your study year" was selected
+    if (this.state.studentYear.length === 0 || this.state.studentYear === "select") {
+      errorArray.push("year");
     }
     // if nothing was typed into password
     if (this.state.password.length === 0) {
@@ -90,11 +97,43 @@ export class SignUp extends Component {
 
   handleSubmit = (e) => {
     console.log(this.validateFields());
+
+    e.preventDefault();
+
+    const data = {
+      degree: this.state.degree,
+      email: this.state.email,
+      first_name: this.state.firstName,
+      last_name: this.state.lastName,
+      stu_id: this.state.studentNumber,
+      password: this.state.password,
+      stu_year: this.state.studentYear
+    };
+    if (this.validateFields()) {
+      axios
+        .post("signup", data)
+        .then((res) => {
+          console.log(res);
+          localStorage.setItem("token", res.data.access_token);
+          console.log("Access token: " ,res.data.access_token);
+          console.log("Decoded token: ", jwt_decode(localStorage.getItem("token")));
+         
+          history.push("/home");
+        })
+        .catch((err) => {
+          this.state.errorMessage = "Try Again: an error ocurred.";
+          this.setState({[this.state.errorMessage]: "Try Again: an error ocurred."});
+          console.log(err);
+        });
+    }else{
+      console.log(this.validateFields());
+    }
   };
 
+
   render() {
-    const {firstName, lastName, studentNumber, email, degree, password, confirmPassword} = this.state
-    const values = {firstName, lastName, studentNumber, email, degree, password, confirmPassword}
+    const {firstName, lastName, studentNumber, studentYear, email, degree, password, confirmPassword} = this.state
+    const values = {firstName, lastName, studentNumber, studentYear, email, degree, password, confirmPassword}
     return (
       <div className="SignUp">
         <div className="topnav">

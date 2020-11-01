@@ -12,12 +12,14 @@ class Login extends Component {
     email: "",
     password: "",
     invalidInput: false,
-    errorMessage:""
+    errorMessage: "",
   };
 
   validateFields = () => {
     // regex to check that the email input follows the correct format
-    let emailRegex = new RegExp("[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}");
+    let emailRegex = new RegExp(
+      "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}"
+    );
     // array to store string corresponding to the incorrect input fields
     let errorArray = [];
 
@@ -31,16 +33,17 @@ class Login extends Component {
       errorArray.push("password");
     }
 
-
     // if array length is larger that 0, then we encountered an error with one of the input fields
     if (errorArray.length > 0) {
       // construct error message string
       let errorString = "Invalid input: ";
-      if (errorArray.length === 1) { // if we only encountered and error
+      if (errorArray.length === 1) {
+        // if we only encountered and error
         errorString += errorArray[0] + ".";
       } else {
         for (var i = 0; i < errorArray.length; i += 1) {
-          if (i === errorArray.length-1) { // if i is the index of the last element in errorArray
+          if (i === errorArray.length - 1) {
+            // if i is the index of the last element in errorArray
             errorString += "and " + errorArray[i] + ".";
           } else {
             errorString += errorArray[i] + ", ";
@@ -49,15 +52,16 @@ class Login extends Component {
       }
       // update error message
       this.state.errorMessage = errorString;
-      this.setState({[this.state.errorMessage]: errorString});
-      this.setState({ invalidInput : false} );
+      this.setState({ [this.state.errorMessage]: errorString });
+      this.setState({ invalidInput: false });
       return false;
-    } else { // we encountered no error
+    } else {
+      // we encountered no error
       // clear error message
       this.state.errorMessage = "";
-      this.setState({[this.state.errorMessage]: ""});
-      this.setState({ invalidInput : true} );
-      return true;      
+      this.setState({ [this.state.errorMessage]: "" });
+      this.setState({ invalidInput: true });
+      return true;
     }
   };
 
@@ -65,17 +69,6 @@ class Login extends Component {
   handleChange = (input) => (e) => {
     this.setState({ [input]: e.target.value });
   };
-
-  // validateFields = () => {
-  //   if (this.state.email.length === 0 || this.state.password.length === 0) {
-  //     this.setState({ invalidInput : true} );
-  //     return false;
-  //   }else{
-  //     this.setState({ invalidInput : false} );
-  //     return true;
-  //   }
-    
-  // };
 
   handleSubmit = (e) => {
     e.preventDefault();
@@ -89,17 +82,23 @@ class Login extends Component {
         .post("login", data)
         .then((res) => {
           localStorage.setItem("token", res.data.access_token);
-          console.log("Access token: " ,res.data.access_token);
-          console.log("Decoded token: ", jwt_decode(localStorage.getItem("token")));
-         
-          history.push("/home");
+          console.log("Access token: ", res.data.access_token);
+          console.log(
+            "Decoded token: ",
+            jwt_decode(localStorage.getItem("token"))
+          );
+          this.props.history.push("/home");
         })
         .catch((err) => {
-          this.state.errorMessage = "Try Again: email and password do not match.";
-          this.setState({[this.state.errorMessage]: "Try Again: email and password do not match."});
+          this.state.errorMessage =
+            "Try Again: email and password do not match.";
+          this.setState({
+            [this.state.errorMessage]:
+              "Try Again: email and password do not match.",
+          });
           console.log(err);
         });
-    }else{
+    } else {
       console.log(this.validateFields());
     }
   };
@@ -121,9 +120,9 @@ class Login extends Component {
         <div className="Login-header">
           <br />
           <img src={logo} className="Home-logo" alt="logo" />
-          <br/>
+          <br />
           <LoginForm handleChange={this.handleChange} values={values} />
-          <label> { this.state.errorMessage } </label>
+          <label> {this.state.errorMessage} </label>
         </div>
         <button className="loginbutton" onClick={this.handleSubmit}>
           Log in

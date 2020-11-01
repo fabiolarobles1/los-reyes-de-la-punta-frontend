@@ -53,6 +53,32 @@ export class SignUpForm extends Component {
               mask="999-99-9999"
             />
           </div>
+          <div className="select-container">
+            <select
+              type="degree"
+              onChange={handleChange("degree")}
+              defaultValue={values.degree}
+            >
+              <option value="select">select your degree</option>
+              <option value="1">Software Engineering</option>
+              <option value="2">Computer Science and Engineering</option>
+              <option value="3">Computer Engineering</option>
+            </select>
+          </div>
+          <div className="select-container">
+            <select
+              type="year"
+              onChange={handleChange("studentYear")}
+              defaultValue={values.studentYear}
+            >
+              <option value="select">select your year</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5+</option>
+            </select>
+          </div>
           <div className="input-container">
             <input
               type="email"
@@ -60,18 +86,6 @@ export class SignUpForm extends Component {
               onChange={handleChange("email")}
               defaultValue={values.email}
             />
-          </div>
-          <div className="input-container">
-            <select
-              type="degree"
-              onChange={handleChange("degree")}
-              defaultValue={values.degree}
-            >
-              <option value="select">select your degree</option>
-              <option value="inso">Software Engineering</option>
-              <option value="ciic">Computer Science and Engineering</option>
-              <option value="icom">Computer Engineering</option>
-            </select>
           </div>
           <div className="input-container">
             <input
