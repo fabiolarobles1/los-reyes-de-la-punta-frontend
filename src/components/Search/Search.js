@@ -23,11 +23,11 @@ class Search extends Component {
                 placeholder="Search for courses"
               />
               <span>
-                <span>
+                <span type="searchButton">
                   <FontAwesomeIcon icon={faSearch} className="searchIcon" />
                 </span>
               </span>
-              <select>
+              <select type="semester">
                 <option value="select">Semester</option>
                 <option value="fall">Fall 2020</option>
                 <option value="spring">Spring 2021</option>

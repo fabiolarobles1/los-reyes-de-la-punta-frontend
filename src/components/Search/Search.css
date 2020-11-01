@@ -48,10 +48,11 @@
   padding: 10px 0px 10px 20px;
 }
 
-/* Style for input fields */
-input {
+/* Style for search input field */
+input[type="search"] {
   outline: 0;
-  padding: 8px 80px;
+  padding: 8px 10px;
+  width: 500px;
   overflow: hidden;
   text-align: left;
   font-size: 16px;
@@ -67,14 +68,8 @@ input {
   border-radius: 4px;
 }
 
-/* Style for search input field*/
-input[type="search"] {
-  padding: 8px 10px;
-  width: 500px;
-}
-
 /* Style for select semester drop down menu*/
-select {
+select[type="semester"] {
   outline: 0;
   padding: 4px 10px;
   overflow: hidden;
@@ -94,7 +89,7 @@ select {
 }
 
 /* Style for the search button*/
-span {
+span[type="searchButton"] {
   background-color: #46BA31;
   padding: 6px 5px;
   padding-bottom: 10px;
