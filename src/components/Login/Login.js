@@ -108,7 +108,7 @@ class Login extends Component {
     const values = { email, password };
     return (
       <div className="Login">
-        <div className="topnav">
+        <div className="topbar">
           <p>
             {" "}
             Welcome to the UPRM enrollment system.

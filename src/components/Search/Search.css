@@ -4,8 +4,18 @@
   background-color: #46BA31;
   overflow: hidden;
   color: white;
-  text-align: left;
+  
   padding-left: 10px;
+  background-image: url('../../assets/green_paw.png');
+  background-size: 26.64px 25px;
+  background-position: 20px ;
+  background-repeat: no-repeat;
+  padding: 5px 20px 5px 55px;
+
+  text-decoration: none;
+  text-align: left;
+  font-size: 16px;
+  font-weight: 600;
 }
 
 /* Style the links inside the navigation bar */

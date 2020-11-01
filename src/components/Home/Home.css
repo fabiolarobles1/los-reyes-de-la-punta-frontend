@@ -9,14 +9,17 @@
 }
 
 .topbar {
-  /* background-color: #dddddd; */
-  /* background-color: hsl(146, 97%, 59%); */
+  background-color: #46BA31;
+  overflow: hidden;
+  color: white;
+  
+  padding-left: 10px;
   background-image: url('../../assets/green_paw.png');
   background-size: 26.64px 25px;
   background-position: 20px ;
   background-repeat: no-repeat;
   padding: 5px 20px 5px 55px;
-  color: gray;
+
   text-decoration: none;
   text-align: left;
   font-size: 16px;
@@ -25,20 +28,26 @@
 
 /* Style the links inside the navigation bar */
 .topbar a {
-  float: right;
+  /* float: right;
   color: gray;
   text-align: center;
   text-decoration: none;
-  /* background-color: rgb(71, 146, 71);*/
+  background-color: rgb(71, 146, 71);
   padding: 5px 10px;
   border-radius: 5px; 
-  border: .5px #ccc solid;
+  border: .5px #ccc solid; */
+  float: right;
+  color: #f2f2f2;
+  text-align: center;
+  text-decoration: none;
+  font-size: 17px;
+  padding-right: 10px;
 
 }
 
 /* Change the color of links on hover */
 .topbar a:hover {
-  background-color: #e2e2e2;
+  color: black;
   /* color: rgb(71, 146, 71); */
   /* opacity: .5; */
 }

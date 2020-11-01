@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Route, Redirect } from "react-router-dom";
+
 function getLogInStatus() {
   if (localStorage.getItem("token")) return true;
   else return false;

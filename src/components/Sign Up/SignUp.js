@@ -136,7 +136,7 @@ export class SignUp extends Component {
     const values = {firstName, lastName, studentNumber, studentYear, email, degree, password, confirmPassword}
     return (
       <div className="SignUp">
-        <div className="topnav">
+        <div className="topbar">
           <p>
             {" "}
             Sign up for a UPRM account
