@@ -88,6 +88,7 @@ select[type="semester"] {
   vertical-align: middle;
   padding-left: 10px;
   margin-left: 40px;
+  width: 280px;
 
   background-color: #ffffff;
   background-size: 20px 20px;
@@ -104,4 +105,20 @@ span[type="searchButton"] {
   padding: 6px 5px;
   padding-bottom: 10px;
   border-radius: 4px;
+}
+
+/* Style for course list */
+ul[type="courses"] {
+  list-style-type: none; /* Remove bullets */
+  padding: 0; /* Remove padding */
+  margin: 0; /* Remove margins */
+}
+
+/* Style for course list elements */
+ul[type="courses"] li {
+  text-align: left;
+  border: 1px solid #ddd; /* Add a thin border to each list item */
+  margin-top: -1px; /* Prevent double borders */
+  background-color: #f6f6f6; /* Add a grey background color */
+  padding: 12px; /* Add some padding */
 }

@@ -96,8 +96,6 @@ export class SignUp extends Component {
   };
 
   handleSubmit = (e) => {
-    console.log(this.validateFields());
-
     e.preventDefault();
 
     const data = {
