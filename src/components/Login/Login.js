@@ -6,6 +6,8 @@ import "./Login.css";
 import LoginForm from "./LoginForm";
 import axios from "axios";
 import jwt_decode from "jwt-decode";
+import Pop from "../PopUp"
+
 
 class Login extends Component {
   state = {
@@ -115,6 +117,7 @@ class Login extends Component {
             <a href="signup" onClick={() => history.push("/signup")}>
               Sign Up
             </a>
+            
           </p>
         </div>
         <div className="Login-header">
