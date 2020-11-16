@@ -5,6 +5,7 @@ import Home from "../components/Home/Home";
 import Login from "../components/Login/Login";
 import SignUp from "../components/Sign Up/SignUp";
 import Search from '../components/Search/Search';
+import CourseDetails from '../components/CourseDetails/CourseDetails';
 import Guard from "./GuardedRoute";
 
 class Routes extends Component {
@@ -17,6 +18,7 @@ class Routes extends Component {
           <Guard path="/search" component={Search}></Guard>
           <Route path="/" exact component={Login}></Route>
           <Route path="/signup" exact component={SignUp}></Route>
+          <Route path="/coursedetails" exact component={CourseDetails}></Route>
         </Switch>
       </Router>
     );

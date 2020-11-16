@@ -122,3 +122,9 @@ ul[type="courses"] li {
   background-color: #f6f6f6; /* Add a grey background color */
   padding: 12px; /* Add some padding */
 }
+
+/* Style for links */
+a {
+  color: #000000;
+  text-decoration: none;
+}

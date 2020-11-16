@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import history from "../../Routing/history";
+import { Link } from 'react-router-dom';
 import "./Search.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
@@ -8,7 +9,7 @@ import axios from "axios";
 class Search extends Component {
   state = {
     query: "",
-    semester: "",
+    semester: "0",
     courses: [],
     loading: false,
     currentPage: 1,
@@ -54,8 +55,8 @@ class Search extends Component {
   }
 
   validateFields = () => {
-    // if query is empty OR nothing was selected in semester OR "Semester" was selected
-    if (this.state.query.length === 0 || this.state.semester.length === 0 || this.state.semester === "select") {
+    // if search bar is empty 
+    if (this.state.query.length === 0) {
       return false;
     } else {
       return true;
@@ -103,7 +104,7 @@ class Search extends Component {
                 type="semester"
                 onChange={this.handleChange("semester")}
                 defaultValue={values.semester}>
-                <option value="select">Select Semester</option>
+                <option value="0">Select Semester</option>
                 <option value="1">Fall 2020</option>
                 <option value="2">Spring 2021</option>
                 <option value="firstSummer">First Summer 2021 (4 weeks)</option>
@@ -114,15 +115,20 @@ class Search extends Component {
           </form>
         </div>
           <ul type="courses">
-            {currentCourses.map(course => (
-              <li key={course.id} className="list-group-item">
-                {course.name}
-                <br/>
-                Credits: {course.credits}
-                <br/>
-                {course.description}
-              </li>
-            ))}
+              {currentCourses.map(course => (
+                <Link to={{
+                  pathname: "/coursedetails",
+                  state: course
+                  }}>
+                  <li key={course.id} className="list-group-item">
+                    {course.name}
+                    <br/>
+                    Credits: {course.credits}
+                    <br/>
+                    {course.description}
+                  </li>
+                </Link>
+              ))}
           </ul>
       </div>
     )

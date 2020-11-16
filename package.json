@@ -17,6 +17,7 @@
     "react-dom": "^16.13.1",
     "react-input-mask": "^2.0.4",
     "react-modal": "^3.11.2",
+    "react-router": "^5.2.0",
     "react-router-dom": "^5.2.0",
     "react-router-guards": "^1.0.2",
     "react-scripts": "3.4.3",

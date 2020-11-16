@@ -1,0 +1,47 @@
+
+/* Style for the div containing the course information */
+.description {
+  text-align: left;
+  background-color: #D6D3D3;
+  padding: 20px 20px 20px 20px;
+}
+
+/* Style for select semester drop down menu */
+select[type="semesterDetails"] {
+  outline: 0;
+  padding: 4px 10px;
+  overflow: hidden;
+  text-align: left;
+  font-size: 13px;
+  vertical-align: middle;
+  padding-left: 10px;
+  width: 280px;
+
+  background-color: #ffffff;
+  background-size: 20px 20px;
+  background-position: 5px;
+  background-repeat: no-repeat;
+
+  border-style: none;
+  border-radius: 4px;
+}
+
+/* Style for save button */
+button[type="save"] {
+  background-color: #46BA31;
+  color: #ffffff;
+  border-radius: 4px;
+  font-size: 15px;
+  width: 100px;
+}
+
+/* Style for save button when hovering over it */
+button:hover[type="save"] {
+  background-color: #56d83f;
+}
+
+/* Style for save button when pressing it */
+button:active[type="save"] {
+  background-color: #32aa1d;
+  color: #000000;
+}
