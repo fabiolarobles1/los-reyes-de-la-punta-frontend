@@ -1,28 +1,19 @@
 import React, { Component } from 'react'
 import history from "../../Routing/history";
-import "./CourseDetails.css";
 
-export class CourseDetails extends Component {
+export class SavedCourses extends Component {
   render() {
-    const course = this.props.location.state
-    console.log(course);
-
     return (
-      <div className="CourseDetails">
+      <div className="SavedCourses">
         <div className="topnav">
           <p>
             {" "}
             <a type="home" href ="" onClick={() => history.push("/home")}>Home</a>
-            <a href ="" onClick={() => history.push("/saved-courses")}>Saved Courses</a>
             <br/>
           </p>
         </div>
         <div className="description">
-          {course.name}
-          <br/>
-          Credits: {course.credits}
-          <br/>
-          {course.description}
+          Your course enrolment date is on INSERT DATE.
           <br/>
           <select type="semesterDetails">
             <option value="0">Select Semester</option>
@@ -39,4 +30,4 @@ export class CourseDetails extends Component {
   }
 }
 
-export default CourseDetails;
+export default SavedCourses

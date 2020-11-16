@@ -83,7 +83,7 @@ class Search extends Component {
           <p>
             {" "}
             <a type="home" href ="" onClick={() => history.push("/home")}>Home</a>
-            <a href ="" onClick={() => history.push("/home")}>Saved Courses</a>
+            <a href ="" onClick={() => history.push("/saved-courses")}>Saved Courses</a>
             <br/>
           </p>
         </div>
@@ -117,7 +117,7 @@ class Search extends Component {
           <ul type="courses">
               {currentCourses.map(course => (
                 <Link to={{
-                  pathname: "/coursedetails",
+                  pathname: "/course-details",
                   state: course
                   }}>
                   <li key={course.id} className="list-group-item">
