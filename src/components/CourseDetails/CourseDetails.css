@@ -26,9 +26,29 @@ select[type="semesterDetails"] {
   border-radius: 4px;
 }
 
+/* Style for enroll button */
+button[type="enroll"] {
+  background-color: #46BA31;
+  color: #ffffff;
+  border-radius: 4px;
+  font-size: 15px;
+  width: 100px;
+}
+
+/* Style for enroll button when hovering over it */
+button:hover[type="enroll"] {
+  background-color: #48c433;
+}
+
+/* Style for enroll button when pressing it */
+button:active[type="enroll"] {
+  background-color: #32aa1d;
+  color: #000000;
+}
+
 /* Style for save button */
 button[type="save"] {
-  background-color: #46BA31;
+  background-color: #2875da;
   color: #ffffff;
   border-radius: 4px;
   font-size: 15px;
@@ -37,11 +57,11 @@ button[type="save"] {
 
 /* Style for save button when hovering over it */
 button:hover[type="save"] {
-  background-color: #56d83f;
+  background-color: #3888f1;
 }
 
 /* Style for save button when pressing it */
 button:active[type="save"] {
-  background-color: #32aa1d;
+  background-color: #236ccc;
   color: #000000;
 }

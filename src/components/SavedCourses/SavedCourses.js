@@ -23,7 +23,7 @@ export class SavedCourses extends Component {
             <option value="secondSummer">Second Summer 2021 (4 weeks)</option>
             <option value="extendedSummer">Extended Summer 2021 (6 weeks)</option>
           </select>
-          <button type="save">Save</button>
+          <button type="enroll">Enroll</button>
         </div>
       </div>
     )

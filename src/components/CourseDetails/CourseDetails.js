@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import history from "../../Routing/history";
 import "./CourseDetails.css";
+import SectionsTable from "./SectionsTable";
 
 export class CourseDetails extends Component {
   render() {
@@ -32,7 +33,11 @@ export class CourseDetails extends Component {
             <option value="secondSummer">Second Summer 2021 (4 weeks)</option>
             <option value="extendedSummer">Extended Summer 2021 (6 weeks)</option>
           </select>
+          <button type="enroll">Enroll</button>
           <button type="save">Save</button>
+        </div>
+        <div className="sections">
+          <SectionsTable/>
         </div>
       </div>
     )
