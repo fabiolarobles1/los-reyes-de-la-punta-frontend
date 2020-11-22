@@ -1,0 +1,20 @@
+
+/* Style for remove button */
+button[type="remove"] {
+  background-color: #ee2626;
+  color: #ffffff;
+  border-radius: 4px;
+  font-size: 15px;
+  width: 100px;
+}
+
+/* Style for remove button when hovering over it */
+button:hover[type="remove"] {
+  background-color: #ff4747;
+}
+
+/* Style for remove button when pressing it */
+button:active[type="remove"] {
+  background-color: #d62121;
+  color: #000000;
+}

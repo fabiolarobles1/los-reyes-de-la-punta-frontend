@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import history from "../../Routing/history";
+import "./SavedCourses.css";
+import CoursesTable from "./CoursesTable";
 
 export class SavedCourses extends Component {
   render() {
@@ -13,7 +15,7 @@ export class SavedCourses extends Component {
           </p>
         </div>
         <div className="description">
-          Your course enrolment date is on INSERT DATE.
+          Here you can save courses to enroll them once it's your enrolment turn.
           <br/>
           <select type="semesterDetails">
             <option value="0">Select Semester</option>
@@ -24,6 +26,10 @@ export class SavedCourses extends Component {
             <option value="extendedSummer">Extended Summer 2021 (6 weeks)</option>
           </select>
           <button type="enroll">Enroll</button>
+          <button type="remove">Remove</button>
+        </div>
+        <div className="courses">
+          <CoursesTable/>
         </div>
       </div>
     )
