@@ -35,26 +35,24 @@ export class SavedCourses extends Component {
 
 
   withdrawCourse = async ()=> {
-    if (this.state.selected.length > 1) { 
-      console.log("You can only withdraw one section at a time.");
-    } else {
-      const sectionId = this.state.selected[0]; // there should be only one element in this.state.selected
+      const sectionIds = this.state.selected; 
 
       // add token to headers for authorization
       const headers = { 'Authorization' : `Bearer ${localStorage.getItem("token")}` };
-
       const loading = true;
       this.setState({ loading });
       
       // send post request
-      console.log(sectionId);
-      axios.post("withdraw_course", {sectionId: sectionId}, { headers })
+      axios.post("withdraw_course", {sectionIds: sectionIds}, { headers })
         .then(res => {
           console.log(res.data);
+
           const loading = false;
           this.setState({ loading });
-        })
-    }
+
+          this.fetchSections();
+          this.setState({selected: []});
+        }) 
   }
 
   handleSelect = input => e => {
@@ -85,7 +83,7 @@ export class SavedCourses extends Component {
     } else { // else the section was not already selected, so we add it to state
       newArray = oldArray.concat(e.target.value);
     }
-    
+       
     this.setState({[input]: newArray});
   }
 
@@ -105,7 +103,7 @@ export class SavedCourses extends Component {
           <button type="remove" onClick={this.withdrawCourse}>Withdraw</button>
         </div>
         <div className="courses">
-          <CoursesTable sections={this.state.sections}  selected={this.state.selected} handleSelect={this.handleSelect}/>
+          <CoursesTable withdraw={true} sections={this.state.sections}  selected={this.state.selected} handleSelect={this.handleSelect}/>
         </div>
       </div>
     )

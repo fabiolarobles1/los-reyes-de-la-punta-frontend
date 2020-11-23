@@ -87,7 +87,7 @@ class Search extends Component {
             <br/>
           </p>
         </div>
-        <div class="searchBar">
+        <div className="searchBar">
           <form>
             <div className="search-container">
               <input type="search"

@@ -70,7 +70,7 @@ export class CourseDetails extends Component {
   enrollCourses = async () => {
     // check how many sections are selected
     if (this.state.selected.length > 1) { 
-      console.log("you can only enroll one section for a course");
+      console.log("You can only enroll one section for a course"); //***********************MAKE MESSAGE VISIBLE*****************
     } else {
       const sectionId = this.state.selected[0]; // there should be only one element in this.state.selected
 
@@ -89,6 +89,27 @@ export class CourseDetails extends Component {
         })
     }
   }
+
+  saveCourses = async () => {
+      const sectionIds = this.state.selected;
+
+       // add token to headers for authorization
+       const headers = { 'Authorization' : `Bearer ${localStorage.getItem("token")}` };
+
+      const loading = true;
+      this.setState({ loading });
+      
+      // send post request
+      console.log(sectionIds);
+      axios.post("save_section",{sectionIds: sectionIds}, {headers})
+        .then(res => {
+          console.log(res);
+          const loading = false;
+          this.setState({ loading });
+          this.setState({selected: []});
+        })
+  }
+
 
   render() {
     const course = this.props.location.state;
@@ -119,7 +140,7 @@ export class CourseDetails extends Component {
             <option value="extendedSummer">Extended Summer 2021 (6 weeks)</option>
           </select>
           <button type="enroll" onClick={this.enrollCourses}>Enroll</button>
-          <button type="save">Save</button>
+          <button type="save" onClick={this.saveCourses}>Save</button>
         </div>
         <div className="sections">
           <SectionsTable sections={this.state.sections} selected={this.state.selected} handleSelect={this.handleSelect}/>
