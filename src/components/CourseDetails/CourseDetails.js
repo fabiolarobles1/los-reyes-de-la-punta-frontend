@@ -2,11 +2,40 @@ import React, { Component } from 'react'
 import history from "../../Routing/history";
 import "./CourseDetails.css";
 import SectionsTable from "./SectionsTable";
+import axios from "axios";
 
 export class CourseDetails extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      sections: [],
+      loading: false
+    }
+
+    this.fetchSections();
+  }
+
+  fetchSections = async () => {
+    const courseName = this.props.location.state.name;
+
+    // add token to headers for authorization
+    const headers = { 'Authorization' : `Bearer ${localStorage.getItem("token")}` };
+
+    const loading = true;
+    this.setState({ loading });
+
+    axios.get("search_sections", { headers })
+      .then(res => {
+        // save sections obtained from get request
+        const sections = res.data;
+        this.setState({ sections });
+        const loading = false;
+        this.setState({ loading });
+      })
+  }
+
   render() {
-    const course = this.props.location.state
-    console.log(course);
+    const course = this.props.location.state;
 
     return (
       <div className="CourseDetails">
@@ -37,7 +66,7 @@ export class CourseDetails extends Component {
           <button type="save">Save</button>
         </div>
         <div className="sections">
-          <SectionsTable/>
+          <SectionsTable sections={this.state.sections}/>
         </div>
       </div>
     )

@@ -3,46 +3,16 @@ import "./SectionsTable.css";
 
 export class SectionsTable extends Component {
 
-  // create dummy data since we this part of the back end is not implemented yet
-  constructor(props) {
-    super(props) 
-    this.state = { 
-       sections: [
-          {section: "CIIC4070-011", 
-          credits: 3, 
-          capacity: 90,
-          remaining: 80, 
-          timePlace: "2:30pm - 3:20pm,   LWV,   S-113", 
-          professor: "Alan Turing", 
-          info: "Slit Section"},
-          {section: "CIIC4070-012", 
-          credits: 3, 
-          capacity: 90,
-          remaining: 30, 
-          timePlace: "3:30pm - 4:20pm,   LWV,   S-113", 
-          professor: "Alan Turing", 
-          info: "Slit Section"},
-          {section: "CIIC4070-013", 
-          credits: 3, 
-          capacity: 90, 
-          remaining: 50,
-          timePlace: "4:30pm - 5:20pm,   LWV,   S-113", 
-          professor: "Alan Turing", 
-          info: "Slit Section"}
-       ]
-    }
-  }
-
   renderTableData() {
-    return this.state.sections.map(section => {
+    return this.props.sections.map(section => {
        return (
-        <tr key={section.section}>
-          <td>{section.section}</td>
+        <tr key={section.SECTION_ID}>
+          <td>{section.course + "-" + section.section}</td>
           <td>{section.capacity}</td>
-          <td>{section.remaining}</td>
-          <td>{section.timePlace}</td>
+          <td>-1</td>
+          <td>{section.time + ", " + section.days + ", " + section.room}</td>
           <td>{section.professor}</td>
-          <td>{section.info}</td>
+          <td>{section.extra_info}</td>
           <td>
             <input type="checkbox" value="section.section"/>
           </td>
