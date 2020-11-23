@@ -7,6 +7,7 @@ import SignUp from "../components/Sign Up/SignUp";
 import Search from '../components/Search/Search';
 import CourseDetails from '../components/CourseDetails/CourseDetails';
 import SavedCourses from '../components/SavedCourses/SavedCourses';
+import WithdrawCourses from '../components/WithdrawCourses/WithdrawCourses';
 import Guard from "./GuardedRoute";
 
 class Routes extends Component {
@@ -21,6 +22,7 @@ class Routes extends Component {
           <Route path="/signup" exact component={SignUp}></Route>
           <Route path="/course-details" exact component={CourseDetails}></Route>
           <Route path="/saved-courses" exact component={SavedCourses}></Route>
+          <Route path="/withdraw-courses" exact component={WithdrawCourses}></Route>
         </Switch>
       </Router>
     );

@@ -21,7 +21,7 @@ class home extends Component {
     right_table: []
   }
 
-  menu = [{title: 'Enrollment for next semester', route:'/search', icon: 'enrollment.png'}, {title:'Dropdown a course', route:'/', icon:'dropdown.png'}]
+  menu = [{title: 'Enrollment for next semester', route:'/search', icon: 'enrollment.png'}, {title:'Withdraw from a course', route:'/withdraw-courses', icon:'dropdown.png'}]
 
   //looks for the courses that match the search
   filtering = (s) => {
