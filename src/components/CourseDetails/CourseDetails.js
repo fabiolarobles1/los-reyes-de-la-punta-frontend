@@ -81,7 +81,8 @@ export class CourseDetails extends Component {
       this.setState({ loading });
       
       // send post request
-      axios.post("search_courses", {sectionId: parseInt(sectionId)}, { headers })
+      console.log(sectionId);
+      axios.post("enroll_course", {sectionId: sectionId}, { headers })
         .then(res => {
           const loading = false;
           this.setState({ loading });
@@ -117,7 +118,7 @@ export class CourseDetails extends Component {
             <option value="secondSummer">Second Summer 2021 (4 weeks)</option>
             <option value="extendedSummer">Extended Summer 2021 (6 weeks)</option>
           </select>
-          <button type="enroll">Enroll</button>
+          <button type="enroll" onClick={this.enrollCourses}>Enroll</button>
           <button type="save">Save</button>
         </div>
         <div className="sections">
