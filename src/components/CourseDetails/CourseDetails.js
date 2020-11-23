@@ -11,7 +11,7 @@ export class CourseDetails extends Component {
       sections: [],
       loading: false
     }
-
+    
     this.fetchSections();
   }
 

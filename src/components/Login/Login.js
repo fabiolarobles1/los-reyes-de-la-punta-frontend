@@ -6,7 +6,6 @@ import "./Login.css";
 import LoginForm from "./LoginForm";
 import axios from "axios";
 import jwt_decode from "jwt-decode";
-import Pop from "../PopUp"
 
 
 class Login extends Component {
@@ -79,6 +78,7 @@ class Login extends Component {
       email: this.state.email,
       password: this.state.password,
     };
+    
     if (this.validateFields()) {
       axios
         .post("login", data)

@@ -8,41 +8,41 @@ export class SectionsTable extends Component {
     super(props) 
     this.state = { 
        sections: [
-          {section: "CIIC4070-011", 
-          credits: 3, 
-          capacity: 90,
-          remaining: 80, 
-          timePlace: "2:30pm - 3:20pm,   LWV,   S-113", 
-          professor: "Alan Turing", 
-          info: "Slit Section"},
-          {section: "CIIC4070-012", 
-          credits: 3, 
-          capacity: 90,
-          remaining: 30, 
-          timePlace: "3:30pm - 4:20pm,   LWV,   S-113", 
-          professor: "Alan Turing", 
-          info: "Slit Section"},
-          {section: "CIIC4070-013", 
-          credits: 3, 
-          capacity: 90, 
-          remaining: 50,
-          timePlace: "4:30pm - 5:20pm,   LWV,   S-113", 
-          professor: "Alan Turing", 
-          info: "Slit Section"},
-          {section: "CIIC4010-060H", 
-          credits: 3, 
-          capacity: 70, 
-          remaining: 36,
-          timePlace: "5:00pm - 6:15pm,   MJ,   S-113", 
-          professor: "Welcome Seeing", 
-          info: "Hybrid"},
-          {section: "CIIC4010-010L", 
-          credits: 3, 
-          capacity: 20, 
-          remaining: 13,
-          timePlace: "11:30am - 1:20pm,   W,   S-121", 
-          professor: "Welcome Seeing", 
-          info: "Laboratory"}
+          // {section: "CIIC4070-011", 
+          // credits: 3, 
+          // capacity: 90,
+          // remaining: 80, 
+          // timePlace: "2:30pm - 3:20pm,   LWV,   S-113", 
+          // professor: "Alan Turing", 
+          // info: "Slit Section"},
+          // {section: "CIIC4070-012", 
+          // credits: 3, 
+          // capacity: 90,
+          // remaining: 30, 
+          // timePlace: "3:30pm - 4:20pm,   LWV,   S-113", 
+          // professor: "Alan Turing", 
+          // info: "Slit Section"},
+          // {section: "CIIC4070-013", 
+          // credits: 3, 
+          // capacity: 90, 
+          // remaining: 50,
+          // timePlace: "4:30pm - 5:20pm,   LWV,   S-113", 
+          // professor: "Alan Turing", 
+          // info: "Slit Section"},
+          // {section: "CIIC4010-060H", 
+          // credits: 3, 
+          // capacity: 70, 
+          // remaining: 36,
+          // timePlace: "5:00pm - 6:15pm,   MJ,   S-113", 
+          // professor: "Welcome Seeing", 
+          // info: "Hybrid"},
+          // {section: "CIIC4010-010L", 
+          // credits: 3, 
+          // capacity: 20, 
+          // remaining: 13,
+          // timePlace: "11:30am - 1:20pm,   W,   S-121", 
+          // professor: "Welcome Seeing", 
+          // info: "Laboratory"}
        ]
     }
   }
@@ -59,7 +59,7 @@ export class SectionsTable extends Component {
           <td>{section.professor}</td>
           <td>{section.info}</td>
           <td>
-            <input type="checkbox" value="section.section"/>
+            <input type="checkbox" value="section.section" id={`sectionId:${section.id}`} />
           </td>
         </tr>
        )
@@ -87,5 +87,5 @@ export class SectionsTable extends Component {
   }
 }
 
-export default SectionsTable
+export default SectionsTable;
 
