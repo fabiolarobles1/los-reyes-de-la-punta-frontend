@@ -8,8 +8,9 @@ export class CourseDetails extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      sections: [],
-      loading: false
+      sections: [], 
+      loading: false,
+      selected: [] // course sections that are selected in the sections table
     }
 
     this.fetchSections();
@@ -32,6 +33,60 @@ export class CourseDetails extends Component {
         const loading = false;
         this.setState({ loading });
       })
+  }
+
+  handleSelect = input => e => {
+    let oldArray = this.state[input]; // get selected values from state
+    let found = false;
+
+    // check if the section that we clicked had previously been selected
+    for (var i = 0; i < oldArray.length; i += 1) {
+      if (oldArray[i] === e.target.value) {
+        found = true;
+      }
+    }
+
+    let newArray;
+
+    // if the section was already selected then we need to remove it from our state
+    if (found) {
+      newArray = [];
+      let index = 0;
+
+      // loop through our selected sections and add them all to newArray except for the previously selected section
+      for (var j = 0; j < oldArray.length; j += 1) {
+        if (oldArray[j] !== e.target.value) {
+          newArray[index] = oldArray[j];
+          index += 1;
+        }
+      }
+    } else { // else the section was not already selected, so we add it to state
+      newArray = oldArray.concat(e.target.value);
+    }
+    
+    this.setState({[input]: newArray});
+  }
+
+  enrollCourses = async () => {
+    // check how many sections are selected
+    if (this.state.selected.length > 1) { 
+      console.log("you can only enroll one section for a course");
+    } else {
+      const sectionId = this.state.selected[0]; // there should be only one element in this.state.selected
+
+      // add token to headers for authorization
+      const headers = { 'Authorization' : `Bearer ${localStorage.getItem("token")}` };
+
+      const loading = true;
+      this.setState({ loading });
+      
+      // send post request
+      axios.post("search_courses", {sectionId: parseInt(sectionId)}, { headers })
+        .then(res => {
+          const loading = false;
+          this.setState({ loading });
+        })
+    }
   }
 
   render() {
@@ -66,7 +121,7 @@ export class CourseDetails extends Component {
           <button type="save">Save</button>
         </div>
         <div className="sections">
-          <SectionsTable sections={this.state.sections}/>
+          <SectionsTable sections={this.state.sections} selected={this.state.selected} handleSelect={this.handleSelect}/>
         </div>
       </div>
     )

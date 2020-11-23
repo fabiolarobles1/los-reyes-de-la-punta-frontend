@@ -14,7 +14,7 @@ export class SectionsTable extends Component {
           <td>{section.professor}</td>
           <td>{section.extra_info}</td>
           <td>
-            <input type="checkbox" value="section.section"/>
+            <input type="checkbox" value={section.SECTION_ID} onChange={this.props.handleSelect("selected")}/>
           </td>
         </tr>
        )
@@ -24,7 +24,7 @@ export class SectionsTable extends Component {
   renderTableHeader() {
     let header = ["Section", "Capacity", "Remaining", "Time and Place", "Professor", "Aditional Information", "Select"]
     return header.map((name, index) => {
-       return <th key={index}>{name}</th>
+      return <th key={index}>{name}</th>
     })
   }
 
