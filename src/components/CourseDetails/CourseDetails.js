@@ -10,7 +10,8 @@ export class CourseDetails extends Component {
     this.state = {
       sections: [], 
       loading: false,
-      selected: [] // course sections that are selected in the sections table
+      selected: [], // course sections that are selected in the sections table
+      semester: "0"
     }
     
     this.fetchSections();
@@ -25,7 +26,7 @@ export class CourseDetails extends Component {
     const loading = true;
     this.setState({ loading });
 
-    axios.get("search_sections", { headers })
+    axios.get(("search_sections?search=<" + courseName), { headers })
       .then(res => {
         // save sections obtained from get request
         const sections = res.data;
@@ -81,7 +82,6 @@ export class CourseDetails extends Component {
       this.setState({ loading });
       
       // send post request
-      console.log(sectionId);
       axios.post("enroll_course", {sectionId: sectionId}, { headers })
         .then(res => {
           const loading = false;
@@ -107,7 +107,14 @@ export class CourseDetails extends Component {
           const loading = false;
           this.setState({ loading });
           this.setState({selected: []});
+
+          history.push("/saved-courses");
         })
+  }
+
+  // handle fields change
+  handleChange = input => e => {
+    this.setState({[input]: e.target.value});
   }
 
 
@@ -125,19 +132,23 @@ export class CourseDetails extends Component {
           </p>
         </div>
         <div className="description">
+          {course.regular_name}
+          <br/>
           {course.name}
           <br/>
           Credits: {course.credits}
           <br/>
           {course.description}
           <br/>
-          <select type="semesterDetails">
+          <select type="semesterDetails"
+            onChange={this.handleChange("semester")}
+            defaultValue={this.state.semester}>
             <option value="0">Select Semester</option>
             <option value="1">Fall 2020</option>
             <option value="2">Spring 2021</option>
-            <option value="firstSummer">First Summer 2021 (4 weeks)</option>
-            <option value="secondSummer">Second Summer 2021 (4 weeks)</option>
-            <option value="extendedSummer">Extended Summer 2021 (6 weeks)</option>
+            <option value="3">First Summer 2021 (4 weeks)</option>
+            <option value="4">Second Summer 2021 (4 weeks)</option>
+            <option value="5">Extended Summer 2021 (6 weeks)</option>
           </select>
           <button type="enroll" onClick={this.enrollCourses}>Enroll</button>
           <button type="save" onClick={this.saveCourses}>Save</button>

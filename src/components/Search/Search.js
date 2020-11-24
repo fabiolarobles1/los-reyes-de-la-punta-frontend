@@ -19,8 +19,7 @@ class Search extends Component {
   fetchCourses = async () => {
     // create query dictionary
     const searchQuery = { 
-      'name' : this.state.query, 
-      'semestre' : this.state.semester
+      'name' : this.state.query
     };
 
     // add token to headers for authorization
@@ -28,7 +27,7 @@ class Search extends Component {
 
     const loading = true;
     this.setState({ loading });
-    
+
     // send post request
     axios.post("search_courses", searchQuery, { headers })
       .then(res => {
@@ -107,20 +106,22 @@ class Search extends Component {
                 <option value="0">Select Semester</option>
                 <option value="1">Fall 2020</option>
                 <option value="2">Spring 2021</option>
-                <option value="firstSummer">First Summer 2021 (4 weeks)</option>
-                <option value="secondSummer">Second Summer 2021 (4 weeks)</option>
-                <option value="extendedSummer">Extended Summer 2021 (6 weeks)</option>
+                <option value="3">First Summer 2021 (4 weeks)</option>
+                <option value="4">Second Summer 2021 (4 weeks)</option>
+                <option value="5">Extended Summer 2021 (6 weeks)</option>
               </select>
             </div>
           </form>
         </div>
           <ul type="courses">
               {currentCourses.map(course => (
-                <Link to={{
+                <Link key={course.id} to={{
                   pathname: "/course-details",
                   state: course
                   }}>
                   <li key={course.id} className="list-group-item">
+                    {course.regular_name}
+                    <br/>
                     {course.name}
                     <br/>
                     Credits: {course.credits}
