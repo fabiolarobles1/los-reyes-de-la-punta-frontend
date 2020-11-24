@@ -86,13 +86,21 @@ export class SavedCourses extends Component {
       axios
         .post("enroll_course", { sectionId: sectionIds[i] }, { headers })
         .then((res) => {
-          // axios
-          //   .delete("remove_section", { data: { sectionId: sectionIds[i] },headers })
-          //   .then((res) => {
-          //     this.fetchSections();
-          //   });
+          //Message of succesfully enrolled, maybe same as message in email -> a sentence after enrolling all classes.
         });
     }
+
+    axios({
+      method: "DELETE",
+      url: "remove_section",
+      headers: headers,
+      data: { sectionIds: sectionIds },
+    }).then((res) => {
+      const loading = false;
+      this.setState({ loading });
+      this.setState({ selected: [] });
+      this.fetchSections();
+    });
   };
 
   removeSelectedCourses = async () => {
@@ -100,20 +108,24 @@ export class SavedCourses extends Component {
 
     // add token to headers for authorization
     const headers = {
-      Authorization: `Bearer ${localStorage.getItem("token")}`, 'Content-Type': 'application/json; charset=utf-8' 
+      Authorization: `Bearer ${localStorage.getItem("token")}`,
+      "Content-type": "application/json",
     };
 
     const loading = true;
     this.setState({ loading });
 
-    // send post request
-    axios.post("remove_section", {sectionIds: sectionIds}, { headers })
-   // axios.delete("remove_section", {headers: headers, body: {sectionIds: sectionIds}})
-      .then((res) => {
-        loading = false;
-        this.setState({ loading });
-        this.setState({ selected: [] });
-      });
+    axios({
+      method: "DELETE",
+      url: "remove_section",
+      headers: headers,
+      data: { sectionIds: sectionIds },
+    }).then((res) => {
+      const loading = false;
+      this.setState({ loading });
+      this.setState({ selected: [] });
+      this.fetchSections();
+    });
   };
 
   render() {
