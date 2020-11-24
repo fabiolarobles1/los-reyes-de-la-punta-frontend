@@ -137,7 +137,7 @@ export class SavedCourses extends Component {
               Home
             </a>
             <a type="search" href="" onClick={() => history.push("/search")}>
-              Back
+              Course Search
             </a>
             <br />
           </p>
