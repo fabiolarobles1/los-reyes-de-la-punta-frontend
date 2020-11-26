@@ -46,6 +46,7 @@ class Search extends Component {
 
   // when the search button is pressed
   handleSubmit = (e) => {
+    e.preventDefault();
     if (this.validateFields()) {
       this.fetchCourses();
     } else {
@@ -75,7 +76,7 @@ class Search extends Component {
       const currentPage = pageNumber;
       this.setState({ currentPage });
     }
-
+    
     return (
       <div className="Search">
         <div className="topnav">
@@ -87,7 +88,7 @@ class Search extends Component {
           </p>
         </div>
         <div className="searchBar">
-          <form>
+          <form onSubmit={this.handleSubmit}>
             <div className="search-container">
               <input type="search"
                 placeholder="Search for courses"
@@ -113,15 +114,15 @@ class Search extends Component {
             </div>
           </form>
         </div>
-          <ul type="courses">
+          <ul type="courses" >
+            <p>Here you can search for courses. Click on them to see details, sections, and be able to enroll or save.</p>
               {currentCourses.map(course => (
                 <Link key={course.id} to={{
                   pathname: "/course-details",
                   state: course
                   }}>
                   <li key={course.id} className="list-group-item">
-                    {course.regular_name}
-                    <br/>
+                    <div className="titleName">{course.regular_name}</div>
                     {course.name}
                     <br/>
                     Credits: {course.credits}

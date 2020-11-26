@@ -126,7 +126,7 @@ export class CourseDetails extends Component {
         <div className="topnav">
           <p>
             {" "}
-            <a type="home" href ="" onClick={() => history.push("/home")}>Home</a>
+            <a type="home" href ="" onClick={() => history.push("/search")}>Search</a>
             <a href ="" onClick={() => history.push("/saved-courses")}>Saved Courses</a>
             <br/>
           </p>

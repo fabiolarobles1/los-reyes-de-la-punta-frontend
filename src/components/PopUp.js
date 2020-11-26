@@ -40,13 +40,13 @@ export default function PopUp(props) {
   );
 }
 const customStyles = {
-  overlay: {},
+  overlay: {borderRadious: "40"},
   content: {
     top: "10%",
     left: "10%",
     bottom: "10%",
     right: "10%",
-    transform: "translate(-10%, -10%, -10%, -10%)",
+    transform: "translate(-20%, -30%, -30%, -20%)",
     backgroundColor: "rgb(188,188,188)",
   },
 };
