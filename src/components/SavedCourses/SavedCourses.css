@@ -18,3 +18,7 @@ button:active[type="remove"] {
   background-color: #d62121;
   color: #000000;
 }
+
+.description {
+  background-color: #c4c4c4;
+}

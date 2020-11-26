@@ -88,6 +88,8 @@ class Search extends Component {
           </p>
         </div>
         <div className="searchBar">
+        <h1>Course's  Search</h1>
+        <p>Here you can search for courses. Click on them to see details, sections, and be able to enroll or save.</p>
           <form onSubmit={this.handleSubmit}>
             <div className="search-container">
               <input type="search"
@@ -115,7 +117,7 @@ class Search extends Component {
           </form>
         </div>
           <ul type="courses" >
-            <p>Here you can search for courses. Click on them to see details, sections, and be able to enroll or save.</p>
+            
               {currentCourses.map(course => (
                 <Link key={course.id} to={{
                   pathname: "/course-details",

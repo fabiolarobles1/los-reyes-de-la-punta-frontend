@@ -99,8 +99,8 @@ export class SavedCourses extends Component {
           </p>
         </div>
         <div className="description">
-          Here you can drop a courses you already enrolled for next semester.
-          <br/>
+          <h1>Withdraw</h1>
+          <p>Here you can drop a courses you already enrolled for next semester.</p>
           <button type="remove" onClick={this.withdrawCourse}>Withdraw</button>
         </div>
         <div className="courses">

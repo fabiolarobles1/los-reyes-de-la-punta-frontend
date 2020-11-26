@@ -48,7 +48,16 @@
   overflow: hidden;
   color: white;
   text-align: left;
-  padding-left: 10px;
+  padding: 20px 20px 10px 20px;
+
+}
+
+.searchBar p{
+  color: black; 
+}
+
+.searchBar h1{
+  color: black; 
 }
 
 /* Style for the container for the search text input*/

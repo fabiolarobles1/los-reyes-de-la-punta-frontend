@@ -143,9 +143,9 @@ export class SavedCourses extends Component {
           </p>
         </div>
         <div className="description">
-          Here you can save courses to enroll them once it's your enrolment
-          turn.
-          <br />
+          <h1>Saved Courses</h1>
+         <p>Here you can see your saved courses. Once it's your enrollment
+          turn, you can proceed to enroll them from this screen.</p> 
           <select type="semesterDetails">
             <option value="0">Select Semester</option>
             <option value="1">Fall 2020</option>
