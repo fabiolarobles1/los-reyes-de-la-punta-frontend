@@ -3,6 +3,7 @@ import history from "../../Routing/history";
 import "./SavedCourses.css";
 import CoursesTable from "./CoursesTable";
 import axios from "axios";
+import PopMessage from "../PopMessage";
 
 export class SavedCourses extends Component {
   constructor(props) {
@@ -11,10 +12,21 @@ export class SavedCourses extends Component {
       sections: [],
       loading: false,
       selected: [], // course sections that are selected in the sections table
+      modal: false,
+      error: false,
+      message: "",
     };
 
     this.fetchSections();
   }
+
+  showModal = () => {
+    this.setState({ modal: true });
+  };
+
+  hideModal = () => {
+    this.setState({ modal: false });
+  };
 
   handleSelect = (input) => (e) => {
     let oldArray = this.state[input]; // get selected values from state
@@ -78,33 +90,49 @@ export class SavedCourses extends Component {
       Authorization: `Bearer ${localStorage.getItem("token")}`,
     };
 
-    const loading = true;
-    this.setState({ loading });
+    this.setState({ loading: true });
+    let error = [];
 
-    // send post request
-    for (var i = 0; i < sectionIds.length; i += 1) {
+    sectionIds.forEach((sec) => {
       axios
-        .post("enroll_course", { sectionId: sectionIds[i] }, { headers })
+        .post("enroll_course", { sectionId: sec }, { headers })
         .then((res) => {
-          //Message of succesfully enrolled, maybe same as message in email -> a sentence after enrolling all classes.
+          axios({
+            method: "DELETE",
+            url: "remove_section",
+            headers: headers,
+            data: { sectionIds: [sec] },
+          }).then((res) => this.fetchSections());
+        })
+        .catch((err) => {
+          error.push(sec);
+          this.setState({ error: true });
+          this.setState({
+            message: "There was an error in some of your sections. Try Again.",
+          });
         });
-    }
-
-    axios({
-      method: "DELETE",
-      url: "remove_section",
-      headers: headers,
-      data: { sectionIds: sectionIds },
-    }).then((res) => {
-      const loading = false;
-      this.setState({ loading });
-      this.setState({ selected: [] });
-      this.fetchSections();
     });
+
+    if (error.length == 0) {
+      this.setState({ error: false });
+      this.setState({
+        message: "All your selected saved section were succesfully enrolled.",
+      });
+    } else {
+      this.setState({ error: true });
+      this.setState({
+        message:
+          "There was an error enrolling some of your sections. Try Again.",
+      });
+    }
+    this.showModal();
+    this.setState({ selected: error });
+    this.setState({ loading: false });
+    this.fetchSections();
   };
 
   removeSelectedCourses = async () => {
-    const sectionIds = this.state.selected; // there should be only one element in this.state.selected
+    const sectionIds = this.state.selected;
 
     // add token to headers for authorization
     const headers = {
@@ -114,18 +142,34 @@ export class SavedCourses extends Component {
 
     const loading = true;
     this.setState({ loading });
+    let error = [];
 
     axios({
       method: "DELETE",
       url: "remove_section",
       headers: headers,
       data: { sectionIds: sectionIds },
-    }).then((res) => {
-      const loading = false;
-      this.setState({ loading });
-      this.setState({ selected: [] });
-      this.fetchSections();
-    });
+    })
+      .then((res) => {
+        this.setState({ loading: false });
+        this.setState({ selected: [] });
+        this.setState({ error: false });
+        this.setState({
+          message: "All your selected saved section were succesfully removed.",
+        });
+        this.showModal();
+        this.fetchSections();
+      })
+      .catch((err) => {
+        this.setState({ error: true });
+        this.setState({ loading: false });
+        this.setState({
+          message:
+            "There was an error removing some of your sections. Try Again.",
+        });
+        this.showModal();
+        this.fetchSections();
+      });
   };
 
   render() {
@@ -144,8 +188,10 @@ export class SavedCourses extends Component {
         </div>
         <div className="description">
           <h1>Saved Courses</h1>
-         <p>Here you can see your saved courses. Once it's your enrollment
-          turn, you can proceed to enroll them from this screen.</p> 
+          <p>
+            Here you can see your saved courses. Once it's your enrollment turn,
+            you can proceed to enroll them from this screen.
+          </p>
           <select type="semesterDetails">
             <option value="0">Select Semester</option>
             <option value="1">Fall 2020</option>
@@ -171,6 +217,12 @@ export class SavedCourses extends Component {
             handleSelect={this.handleSelect}
           />
         </div>
+        <PopMessage
+          modal={this.state.modal}
+          handleClose={this.hideModal}
+          error={this.state.error}
+          message={this.state.message}
+        />
       </div>
     );
   }
