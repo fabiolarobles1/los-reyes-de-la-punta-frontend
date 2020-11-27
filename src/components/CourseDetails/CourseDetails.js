@@ -10,6 +10,7 @@ export class CourseDetails extends Component {
     super(props);
     this.state = {
       sections: [],
+      enrolledSections: [],
       loading: false,
       selected: [], // course sections that are selected in the sections table
       semester: "0",
@@ -17,7 +18,7 @@ export class CourseDetails extends Component {
       error: false,
       message: "",
     };
-
+    this.fetchEnrolledSections();
     this.fetchSections();
   }
   showModal = () => {
@@ -48,6 +49,24 @@ export class CourseDetails extends Component {
         const loading = false;
         this.setState({ loading });
       });
+  };
+
+  fetchEnrolledSections = async () => {
+    // add token to headers for authorization
+    const headers = {
+      Authorization: `Bearer ${localStorage.getItem("token")}`,
+    };
+
+    const loading = true;
+    this.setState({ loading });
+
+    axios.get("student_enrollment", { headers }).then((res) => {
+      // save sections obtained from get request
+      console.log(res.data);
+      this.setState({ enrolledSections: res.data });
+      const loading = false;
+      this.setState({ loading });
+    });
   };
 
   handleSelect = (input) => (e) => {
@@ -95,50 +114,74 @@ export class CourseDetails extends Component {
       //show pop up error
       this.showModal();
     } else {
-      const sectionId = this.state.selected[0]; // there should be only one element in this.state.selected
+      const sectionId = this.state.selected; // there should be only one element in this.state.selected
+      var repeated = false;
+      for (var course in this.state.enrolledSections) {
+        console.log(this.state.enrolledSections[course].course, " AND ", sectionId[0].split(",")[1]);
+        if (this.state.enrolledSections[course].course == sectionId[0].split(",")[1]) {
+          repeated = true;
+          break;
+        }
+      }
+      if (repeated) {
+        this.setState({ error: true });
+        this.setState({
+          message:
+            "You are already enrolled in this class. In order to change, first withdraw and then come back.",
+        });
 
-      // add token to headers for authorization
-      const headers = {
-        Authorization: `Bearer ${localStorage.getItem("token")}`,
-      };
+        //show pop up error
+        this.showModal();
+      } else {
+        // add token to headers for authorization
+        const headers = {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        };
 
-      this.setState({ loading: true });
+        this.setState({ loading: true });
 
-      // send post request
-      axios
-        .post("enroll_course", { sectionId: sectionId }, { headers })
-        .then((res) => {
-          //no error
-          this.setState({ error: false });
-          this.setState({
-            message: `You have succesfully enrolled ${this.props.location.state.name}`
-          });
-
-          this.setState({ selected: [] });
-
-          //show pop up
-          this.setState({ loading: false });
-          this.showModal();
-        })
-        .catch((err) => {
-          if (err) {
-            //set error with message
-            this.setState({ error: true });
+        // send post request
+        axios
+          .post("enroll_course", { sectionId: sectionId[0] }, { headers })
+          .then((res) => {
+            //no error
+            this.setState({ error: false });
             this.setState({
-              message:
-                "There was an error trying to enroll your course. Please, try again.",
+              message: `You have succesfully enrolled ${this.props.location.state.name}`,
             });
+
+            // this.setState({ selected: [] });
 
             //show pop up
             this.setState({ loading: false });
             this.showModal();
-          }
-        });
+            this.fetchSections();
+            this.fetchEnrolledSections();
+          })
+          .catch((err) => {
+            if (err) {
+              //set error with message
+              this.setState({ error: true });
+              this.setState({
+                message:
+                  "There was an error trying to enroll your course. Please, try again.",
+              });
+
+              //show pop up
+              this.setState({ loading: false });
+              this.showModal();
+            }
+          });
+      }
     }
   };
 
   saveCourses = async () => {
     const sectionIds = this.state.selected;
+
+    for (var i = 0; i < sectionIds.length; i++) {
+      sectionIds[i] = sectionIds[i][0];
+    }
 
     // add token to headers for authorization
     const headers = {
@@ -154,7 +197,7 @@ export class CourseDetails extends Component {
         //no error
         this.setState({ error: false });
         this.setState({
-          message: `You have succesfully saved ${this.props.location.state.name}. You can check it out on Saved Couses.`
+          message: `You have succesfully saved ${this.props.location.state.name}. You can check it out on Saved Couses.`,
         });
 
         this.setState({ selected: [] });
@@ -170,7 +213,7 @@ export class CourseDetails extends Component {
           message:
             "There was an error trying to save your course. Please, try again.",
         });
-        
+
         //show pop up
         this.setState({ loading: false });
         this.showModal();

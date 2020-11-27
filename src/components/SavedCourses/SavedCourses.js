@@ -113,7 +113,7 @@ export class SavedCourses extends Component {
         });
     });
 
-    if (error.length == 0) {
+    if (error.length == 0 && !this.state.error) {
       this.setState({ error: false });
       this.setState({
         message: "All your selected saved section were succesfully enrolled.",

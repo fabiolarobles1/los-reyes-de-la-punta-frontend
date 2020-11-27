@@ -14,7 +14,7 @@ export class SectionsTable extends Component {
           <td>{section.professor}</td>
           <td>{section.extra_info}</td>
           <td>
-            <input type="checkbox" value={section.SECTION_ID} onChange={this.props.handleSelect("selected")}/>
+            <input type="checkbox" value={[section.SECTION_ID, section.course]} onChange={this.props.handleSelect("selected")}/>
           </td>
         </tr>
        )
