@@ -10,13 +10,14 @@ export class SavedCourses extends Component {
     super(props);
     this.state = {
       sections: [],
+      enrolledSections: [],
       loading: false,
       selected: [], // course sections that are selected in the sections table
       modal: false,
       error: false,
       message: "",
     };
-
+    this.fetchEnrolledSections();
     this.fetchSections();
   }
 
@@ -80,55 +81,118 @@ export class SavedCourses extends Component {
     });
   };
 
-  enrollSelectedCourses = async () => {
-    //***********LOGIC OF NOT ENROLLING TWO SECTIONS OF SAME CLASS *****************/
-
-    const sectionIds = this.state.selected; // there should be only one element in this.state.selected
-
+  fetchEnrolledSections = async () => {
     // add token to headers for authorization
     const headers = {
       Authorization: `Bearer ${localStorage.getItem("token")}`,
     };
 
-    this.setState({ loading: true });
-    let error = [];
+    const loading = true;
+    this.setState({ loading });
 
-    sectionIds.forEach((sec) => {
-      axios
-        .post("enroll_course", { sectionId: sec }, { headers })
-        .then((res) => {
-          axios({
-            method: "DELETE",
-            url: "remove_section",
-            headers: headers,
-            data: { sectionIds: [sec] },
-          }).then((res) => this.fetchSections());
-        })
-        .catch((err) => {
-          error.push(sec);
-          this.setState({ error: true });
-          this.setState({
-            message: "There was an error in some of your sections. Try Again.",
-          });
-        });
+    axios.get("student_enrollment", { headers }).then((res) => {
+      // save sections obtained from get request
+      console.log(res.data);
+      this.setState({ enrolledSections: res.data });
+      const loading = false;
+      this.setState({ loading });
     });
+  };
 
-    if (error.length == 0 && !this.state.error) {
-      this.setState({ error: false });
-      this.setState({
-        message: "All your selected saved section were succesfully enrolled.",
-      });
-    } else {
+  enrollSelectedCourses = async () => {
+    //***********LOGIC OF NOT ENROLLING TWO SECTIONS OF SAME CLASS *****************/
+
+    const sectionIds = this.state.selected; // there should be only one element in this.state.selected
+
+    let setSection = new Set();
+    let repeated = false;
+    sectionIds.forEach((c) => {
+      if (setSection.has(c.split(",")[1])) {
+        repeated = true;
+      } else {
+        setSection.add(c.split(",")[1]);
+      }
+    });
+    console.log("SET: ", setSection);
+    if (repeated) {
       this.setState({ error: true });
       this.setState({
         message:
-          "There was an error enrolling some of your sections. Try Again.",
+          "You cannot enrolled more than one section of a class. Select only one section of each class.",
       });
+      //show pop up error
+      this.showModal();
+
+    } else {
+      // add token to headers for authorization
+      const headers = {
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      };
+
+      this.setState({ loading: true });
+      let error = [];
+      let name = "";
+
+      sectionIds.forEach((sec) => {
+        let alredyEnrolled = false;
+        const current = sec.split(",")[1];
+        const idSec = sec.split(",")[0];
+        for (var course in this.state.enrolledSections) {
+          if (this.state.enrolledSections[course].course == current) {
+            alredyEnrolled = true;
+            break;
+          }
+        }
+        if (!alredyEnrolled) {
+          axios
+            .post("enroll_course", { sectionId: idSec }, { headers })
+            .then((res) => {
+              axios({
+                method: "DELETE",
+                url: "remove_section",
+                headers: headers,
+                data: { sectionIds: [sec] },
+              }).then((res) => this.fetchSections());
+            })
+            .catch((err) => {
+              error.push(sec);
+              this.setState({ error: true });
+              this.setState({
+                message:
+                  "There was an error in some of your sections. Try Again.",
+              });
+            });
+        }else {
+          name = name + current +", ";
+          error.push(sec);
+        }
+      });
+      name = name.substring(0,name.length-2);
+      if(name.length>0){
+        this.setState({ error: true });
+        this.setState({
+          message: `There was an error in some of your sections. ${name} where already enrolled, in order 
+          to change them proceed first to withdraw and then come back. If you selected other courses, they were succesfully enrolled.`,
+        });
+      }
+
+      else if (error.length == 0 && !this.state.error) {
+        this.setState({ error: false });
+        this.setState({
+          message: "All your selected saved section were succesfully enrolled.",
+        });
+      } else {
+        this.setState({ error: true });
+        this.setState({
+          message:
+            "There was an error enrolling some of your sections. Try Again.",
+        });
+      }
+      this.showModal();
+      this.setState({ selected: error });
+      this.setState({ loading: false });
+      this.fetchSections();
     }
-    this.showModal();
-    this.setState({ selected: error });
-    this.setState({ loading: false });
-    this.fetchSections();
   };
 
   removeSelectedCourses = async () => {

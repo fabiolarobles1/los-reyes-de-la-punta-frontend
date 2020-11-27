@@ -142,7 +142,7 @@ export class CourseDetails extends Component {
 
         // send post request
         axios
-          .post("enroll_course", { sectionId: sectionId[0] }, { headers })
+          .post("enroll_course", { sectionId: sectionId[0].split(",")[0] }, { headers })
           .then((res) => {
             //no error
             this.setState({ error: false });
@@ -180,7 +180,8 @@ export class CourseDetails extends Component {
     const sectionIds = this.state.selected;
 
     for (var i = 0; i < sectionIds.length; i++) {
-      sectionIds[i] = sectionIds[i][0];
+      console.log(sectionIds[i])
+      sectionIds[i] = sectionIds[i].split(",")[0];
     }
 
     // add token to headers for authorization
