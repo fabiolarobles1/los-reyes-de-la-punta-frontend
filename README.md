@@ -1,5 +1,5 @@
 # UPR Enrollment System Project ( Front-End )
-### This group project was made for the INSO 4001 Course at UPRM. It is a proposal to improve the enrollment system of our university with a more user friendly interface.
+### This group project was made for the INSO 4101 Course at UPRM. It is a proposal to improve the enrollment system of our university with a more user friendly interface.
   
 #
 #
