@@ -2,6 +2,7 @@
 ### This group project was made for the INSO 4101 Course at UPRM. It is a proposal to improve the enrollment system of our university with a more user friendly interface.
   
 #
+The project ideas and proposals documents can be found [HERE](https://github.com/uprm-inso-4101-2020-2021-S1/semester-project-los-reyes-de-la-punta).
 #
 
 
